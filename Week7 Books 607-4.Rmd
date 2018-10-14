@@ -1,0 +1,96 @@
+---
+title: "Week7 Books 607-4"
+author: "Hui Gracie Han"
+date: "October 13, 2018"
+output: html_document
+---
+```{r}
+library(jsonlite)
+library(xml2)
+library(rvest)
+library(XML)
+library(RCurl)
+library(tidyverse)
+
+```
+ Read the JSON FILE 
+
+```{r}
+json_books <- fromJSON(txt = "https://raw.githubusercontent.com/ghh2001/607Assignment7-/master/booksGH3.json")
+class (json_books)
+
+json_books
+
+# the list of author did not work (currently a list, Chr1, chr2 etc), otherwise all worked
+
+```
+Alternative method of reading the Json File, using getURL function
+
+```{r}
+raw_JSON = getURL("https://raw.githubusercontent.com/ghh2001/607Assignment7-/master/booksGH3.json", ssl.verifypeer = FALSE)
+
+booksGH_JSON = fromJSON(txt = raw_JSON)
+
+str(booksGH_JSON)
+class (booksGH_JSON)
+```
+
+Create a dataframe from the Json Files just read
+
+```{r}
+booksGH_JSON_df = as.data.frame(booksGH_JSON)
+class (booksGH_JSON_df)
+```
+
+```{r}
+#kable (booksGH_JSON_df)
+# but, the aurthors showd as C ("author1, author2") format,
+```
+
+try the 3rd way below to read JSON file
+```{r}
+json.url <- "https://raw.githubusercontent.com/ghh2001/607Assignment7-/master/booksGH3.json"
+
+
+json.file <- getURLContent(json.url)
+
+json.df <- as.data.frame(fromJSON(json.file[[1]]))
+colnames(json.df) <- str_replace(colnames(json.df),"books\\.", "")
+colnames(json.df) <- str_replace(colnames(json.df),"\\.", " ")
+dim(json.df)
+
+```
+
+```{r}
+#kable(json.df)
+# it works, but it appears 3 times, which does not make sense
+```
+Read in Xml File
+```{r}
+
+data2 <- getURL("https://raw.githubusercontent.com/ghh2001/607Assignment7-/master/booksGH3.xml")
+xbooks <- xmlParse(data2)
+class (xbooks)
+
+root <- xmlRoot(xbooks)
+class (root)
+
+books_xml <- xmlToDataFrame(root)
+class (books_xml)
+books_xml
+
+```
+Read in HtML file
+
+```{r}
+
+books_html <- "https://raw.githubusercontent.com/ghh2001/TestAug28GH/master/booksGH3.html" %>%
+  read_html () %>%
+  html_nodes("table") %>%
+  html_table(fill = T)
+books_html <- as.data.frame(books_html)
+books_html
+
+```
+
+
