@@ -1,0 +1,30 @@
+Title
+Authors
+Type
+Length
+AmazonRating
+Start with Why: How Great Leaders Inspire Everyone to Take Action
+Simon Sinek
+Audible Audiobook
+288
+4.5
+The Four: The Hidden DNA of Amazon, Apple, Facebook, and Google
+Scott Galloway
+Kindle
+320
+4.5
+Change or Die: The Three Keys to Change at Work and in Life 
+Alan Deutschman
+Paperpack
+256
+4.5
+Crushing it! How Great Entrepreneurs Build 
+Gary Vaynerchuk
+Audible Audiobook
+420 
+4.5
+Data Science for Business: What You Need to Know about Data Mining and Data-Analytic Thinking
+Foster Provost; Karen Dillon; Tom Fawcett 
+Paperpack
+414
+4.5
